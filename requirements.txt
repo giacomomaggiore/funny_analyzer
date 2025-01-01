@@ -136,7 +136,6 @@ orjson==3.10.3
 overrides==7.7.0
 packaging==23.2
 pandas==2.1.4
-pandas-datareader @ git+https://github.com/pydata/pandas-datareader.git@a1cf7a20fe03dd63e930fa5ca1311a57897c9ddd
 pandocfilters==1.5.1
 parso==0.8.4
 patsy==0.5.6
