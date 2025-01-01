@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
 templates = Jinja2Templates(directory="templates")
 import matplotlib.pyplot as plt
+import google.generativeai as genai
 
 import PIL.Image
 import os
@@ -35,7 +36,6 @@ load_dotenv()
 api_key = os.getenv("api_key")
 
 #--------------------------------------------------------------
-import google.generativeai as genai
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel("gemini-1.5-flash")
 #--------------------------------------------------------------
