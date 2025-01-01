@@ -75,8 +75,8 @@ function submitForm() {
     }
 
     
-    query_parameters = `asset_1=${asset_1}&percentage_1=${percentage_1}&asset_2=${asset_2}&percentage_2=${percentage_2}&asset_3=${asset_3}&percentage_3=${percentage_3}&asset_4=${asset_4}&percentage_4=${percentage_4}`
-    url = "/analyze" + query_parameters;
+    query_parameters = `?asset_1=${asset_1}&percentage_1=${percentage_1}&asset_2=${asset_2}&percentage_2=${percentage_2}&asset_3=${asset_3}&percentage_3=${percentage_3}&asset_4=${asset_4}&percentage_4=${percentage_4}`
+    url = domanin + "/analyze" + query_parameters;
 
     console.log(url)
     
