@@ -60,6 +60,7 @@ async def test():
 
 default_asset = ""
 
+@app.get("/analyze")
 @app.get('/analyze/')
 async def analyze(asset_1: str=default_asset, asset_2: str = default_asset, 
                   asset_3: str = default_asset, asset_4: str = default_asset,
