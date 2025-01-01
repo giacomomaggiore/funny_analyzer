@@ -1,4 +1,22 @@
+:root {
+    --color-1: black;
+    --color-2: white(171, 171, 171);
+    --color-3: rgb(181, 181, 181);
+    --color-4: rgb(255, 165, 255);
+    --margin-top: 10px;
+    --margin-left: 10px;
+  }
+  
 
+
+
+html, body {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hides the scrollbars */
+    padding: 0 0 0 0; /* Removes default padding */
+    margin: 0 0 0 0; /* Remove the margin */
+}
 .typewriter p {
     display: inline-block;
     border-right: 2px solid black;
@@ -7,23 +25,93 @@
     animation: caret 1s steps(1) infinite;
 }
 
+.header{
+    background-color: var(--color-3);
+    margin: 0;
+    padding: var(--margin-top);
+}
+
+
 @keyframes caret {
-    50% {
+    0% {
         border-color: transparent;
     }
 }
 
-.container{
-    display: flex;
-    justify-content: flex-start;
-
-    height: 100vh;
-    justify-content: left;
+input {
+    margin: 4px 0;
+    border: none;
+    border-bottom: 3px solid var(--color-1); /* Light gray border */
+    background-color: transparent; /* Transparent background */
+    font-size: 20px;
 }
 
-.form{
+input:focus {
+    outline: none;
+    border-bottom-color: #000; /* Black border on focus */
+}
+
+button {
+    margin-top: var(--margin-top);
+    width: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: var(--color-3);
+    border: none;
+    border-bottom: 2px solid var(--color-1);
+}
+
+button:hover {
+    background-color: lighr-gray; /* Color when hovered */
+}
+
+.form-container {
     display: flex;
     flex-direction: column;
     height: fit-content;
     background-color: white;
+    width: 40%;
+}
+
+.asset-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.percentage {
+    width: 30%;
+}
+
+.asset {
+    width: 65%;
+}
+
+.content {
+    width: 90%;
+    margin: var(--margin-left) var(--margin-top);
+}
+
+.analysis-container {
+    width: 85%;
+    font-size: 25px;
+
+    word-wrap: break-word;
+    
+}
+
+#analysis-text{
+    display: block; /* or inline-block, at least its a block element */
+    height: auto; /* height cannot be defined */
+    word-break: break-world; /*  */
+    white-space: normal; /* be sure its not 'nowrap'! ! ! :/ */
+}
+
+.footer{
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-4);
 }

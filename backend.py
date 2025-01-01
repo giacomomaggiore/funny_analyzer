@@ -118,9 +118,15 @@ def create_portfolio(portfolio_dict):
         df_data.iloc[:, j] = df_data.iloc[:, j] * n_shares_per_asset[j]
     
     df_data["portfolio_value"] = df_data.sum(axis=1)
+    cash_portfolio = total_amount - df_data["portfolio_value"].iloc[0]
+    df_data["portfolio_value"] = df_data["portfolio_value"] + cash_portfolio
     df_portfolio = pd.DataFrame( index = df_data.index)
     df_portfolio["Portfolio"] = df_data["portfolio_value"] 
     df_portfolio["Benchmark"] = df_data_benchmark * n_shares_benchmark
+    df_portfolio.fillna(method='ffill', inplace=True)
+    df_portfolio.fillna(method='bfill', inplace=True)
+    cash_benchmark = total_amount - df_portfolio["Benchmark"].iloc[0]
+    df_portfolio["Benchmark"] = df_portfolio["Benchmark"] + cash_benchmark
     
     
     portfolio_start_value = df_portfolio.iloc[0, 0]
@@ -162,6 +168,12 @@ def gemini_analysis(portfolio_dict, photo_1_path):
     Asset: {portfolio_dict['asset_1'][1]} :{portfolio_dict['asset_1'][0]}%
     Asset: {portfolio_dict['asset_2'][1]} :{portfolio_dict['asset_2'][0]}%
     Analyze it in a funny way please!
+    you can do one of the following:
+    - make comparison wih famous movies
+    - make comparison with food
+    - make comparison with animals
+    - make comparison with famous people
+    - make comparison with famous places
     Keep it short and make fun of the investor (less than 10000 characters)."""
     
 

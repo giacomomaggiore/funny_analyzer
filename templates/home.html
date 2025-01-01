@@ -18,51 +18,61 @@
 </head>
 <body class="poppins-regular">
     <div class="header">
-        <h1><s>Not</s> Portfolio Analyzer
-    </div>
-    <div>
-        <h2>But you can still enter your assets and their percentages</h2>
-    </div>
-
-    <div class ="form container">
-    <div class="asset-form">
-        <input list="assets" id = "asset-1">
-        <input type="number"  list="percentages" default = "0" id = "percentage-1">
-    </div>
-    <div class="asset-form">
-        <input list="assets" id = "asset-2">
-        <input type="number"  list="percentages" default = "0" id = "percentage-2">
-    </div> 
-    <div class="asset-form">
-        <input list="assets" id = "asset-3">
-        <input type="number"  list="percentages" default = "0" id = "percentage-3">
-    </div> 
-    <div class="asset-form">
-        <input list="assets" id = "asset-4">
-        <input type="number"  list="percentages" default = "0" id = "percentage-4">
-    </div> 
-
-    
-    </div>
-    
-
-    <button onclick="submitForm()">Analyze!</button>
-    <datalist id="assets">
-        <option value="AAPL">
-        <option value="TSLA">
-        <option value="MSFT">
-        <option value="IWDA.AS">
-    </datalist>
-
-
-
-    <div class = "analysis container" class="typewriter">
-        <p id="analysis-text">
+        <h1><s>NOT</s> A PORTFOLIO ANALYZER</h1>
+        <h3>I'm just a funny financial adivsor that will tell his opinion. <br> 
+        Please provide your assets (as listed in <a href="https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_b302b107-43ee-4daa-8c86-6fdf654f5a4d" target="_blank">Yahoo Finance</a>)
+        <br>and the percentage (as a integer) you want to allocate to each asset. <br>
         
-        </p>
+    </h2>
+    </div>
+    
+    <div class = "content">
+        <div class ="form-container " >
+            <div class="asset-form">
+                <input list="assets" class="asset poppins-bold" value = "AAPL" id = "asset-1">
+                <input type="number"  list="percentages" value = "20" class = "percentage" id = "percentage-1">
+            </div>
+            <div class="asset-form">
+                <input list="assets" class="asset poppins-bold" value = "TSLA" id = "asset-2">
+                <input type="number"  list="percentages" value = "20" class = "percentage" id = "percentage-2">
+            </div> 
+            <div class="asset-form">
+                <input list="assets" class="asset poppins-bold"  value = "MSFT" id = "asset-3">
+                <input type="number"  list="percentages" value = "20"class = "percentage" id = "percentage-3">
+            </div> 
+            <div class="asset-form">
+                <input list="assets" class="asset poppins-bold" value = "IWDA.AS" id = "asset-4">
+                <input type="number"  list="percentages" value = "20" class = "percentage" id = "percentage-4">
+            </div> 
+
+        
+            <button onclick="submitForm()">SEND!</button>
+            <datalist id="assets">
+                    <option value="AAPL">
+                    <option value="TSLA">
+                    <option value="SPY">
+                    <option value="MSFT">
+                    <option value="^DJI">
+                    <option value="IWDA.AS">
+                    <option value="^RUT">
+                    <option value="SPY">
+                    <option value="^FCHI">
+           
+            </datalist>
+        
+
+        </div>
+
+        <div class = "analysis-container typewriter">
+                <p id="analysis-text" style="text-align: justify; overflow: hidden"></p>
+        </div>
     </div>
 
-    <script src="{{url_for('static',path='/script.js')}}"></script>
+    <div class="footer">
+        <p>Created with LOVE by <a href="https://www.linkedin.com/notifications/?filter=all" target="_blank">Giacomo Maggiore</a></p>
+    </div>
+    
+        <script src="{{url_for('static',path='/script.js')}}"></script>
 
 </body>
 </html>
