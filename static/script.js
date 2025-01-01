@@ -73,7 +73,7 @@ function submitForm() {
     }
 
     analysis_text.innerHTML = ""
-    base_url = "http://localhost:8000/analyze?"
+    //base_url = "http://localhost:8000/analyze?"
     base_url = "https://funny-analyzer.onrender.com/analyze?"
     query_parameters = `asset_1=${asset_1}&percentage_1=${percentage_1}&asset_2=${asset_2}&percentage_2=${percentage_2}&asset_3=${asset_3}&percentage_3=${percentage_3}&asset_4=${asset_4}&percentage_4=${percentage_4}`
     url = base_url + query_parameters;
