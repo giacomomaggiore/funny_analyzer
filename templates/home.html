@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Static Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&display=swap" rel="stylesheet">
+
+
+    <link
+            href="{{url_for('static',path='/style.css')}}"
+            rel="stylesheet"
+        />
+        <link
+        href="{{url_for('static',path='/font.css')}}"
+        rel="stylesheet"
+    />
+</head>
+<body class="poppins-regular">
+    <div class="header">
+        <h1><s>Not</s> Portfolio Analyzer
+    </div>
+    <div>
+        <h2>But you can still enter your assets and their percentages</h2>
+    </div>
+
+    <div class ="form container">
+    <div class="asset-form">
+        <input list="assets" id = "asset-1">
+        <input type="number"  list="percentages" default = "0" id = "percentage-1">
+    </div>
+    <div class="asset-form">
+        <input list="assets" id = "asset-2">
+        <input type="number"  list="percentages" default = "0" id = "percentage-2">
+    </div> 
+    <div class="asset-form">
+        <input list="assets" id = "asset-3">
+        <input type="number"  list="percentages" default = "0" id = "percentage-3">
+    </div> 
+    <div class="asset-form">
+        <input list="assets" id = "asset-4">
+        <input type="number"  list="percentages" default = "0" id = "percentage-4">
+    </div> 
+
+    
+    </div>
+    
+
+    <button onclick="submitForm()">Analyze!</button>
+    <datalist id="assets">
+        <option value="AAPL">
+        <option value="TSLA">
+        <option value="MSFT">
+        <option value="IWDA.AS">
+    </datalist>
+
+
+
+    <div class = "analysis container" class="typewriter">
+        <p id="analysis-text">
+        
+        </p>
+    </div>
+
+    <script src="{{url_for('static',path='/script.js')}}"></script>
+
+</body>
+</html>

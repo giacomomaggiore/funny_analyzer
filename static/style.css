@@ -1,0 +1,29 @@
+
+.typewriter p {
+    display: inline-block;
+    border-right: 2px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+
+    height: 100vh;
+    justify-content: left;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: white;
+}
