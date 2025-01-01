@@ -10,6 +10,6 @@ typing
 matplotlib
 google.generativeai 
 
-PIL
+pillow
 os
 base64
