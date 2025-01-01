@@ -74,6 +74,8 @@ async def analyze(asset_1: str=default_asset, asset_2: str = default_asset,
     }
     
     [x, y] = create_portfolio(portfolio_dict)
+    
+    
     funny_analysis = gemini_analysis(portfolio_dict, "graph.png")
     return (funny_analysis)
     
