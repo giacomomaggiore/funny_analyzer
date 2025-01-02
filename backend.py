@@ -71,8 +71,7 @@ async def analyze(asset_1: str=default_asset, asset_2: str = default_asset,
     }
     
     results = create_portfolio(portfolio_dict)
-    return results
-    #funny_analysis = gemini_analysis(portfolio_dict, results)
+    funny_analysis = gemini_analysis(portfolio_dict, results)
     return (funny_analysis)
     
       
