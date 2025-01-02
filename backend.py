@@ -72,7 +72,7 @@ async def analyze(asset_1: str=default_asset, asset_2: str = default_asset,
     
     results = create_portfolio(portfolio_dict)
     return results
-    funny_analysis = gemini_analysis(portfolio_dict, results)
+    #funny_analysis = gemini_analysis(portfolio_dict, results)
     return (funny_analysis)
     
       
@@ -116,11 +116,11 @@ def create_portfolio(portfolio_dict):
     print(amount_splits)
     df_data = yf.download(asset_list, start=start_date, end=end_date)
     print(df_data)
-    #df_data = df_data["Adj Close"]
-    return df_data.iloc[0, 0]
+    df_data = df_data["Close"]
+    #return df_data.iloc[0, 0]
     df_data.fillna(method='ffill', inplace=True)
     df_data.fillna(method='bfill', inplace=True)
-    df_data_benchmark = yf.download(benchmark, start=start_date, end=end_date)["Adj Close"]
+    df_data_benchmark = yf.download(benchmark, start=start_date, end=end_date)["Close"]
     n_shares_benchmark = math.floor(total_amount / df_data_benchmark.iloc[0])
     n_shares_per_asset = np.zeros(len(asset_list))
     print("eccomi")
