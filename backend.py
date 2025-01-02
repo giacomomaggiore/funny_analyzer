@@ -56,7 +56,7 @@ async def home(request: Request):
 
 @app.get('/test')
 async def test():
-    return "ciao"
+    return "ciao mamo"
 
 
 default_asset = ""

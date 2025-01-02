@@ -16,7 +16,6 @@ html, body {
     overflow: hidden; /* Hides the scrollbars */
     padding: 0 0 0 0; /* Removes default padding */
     margin: 0 0 0 0; /* Remove the margin */
-
 }
 .typewriter p {
     display: inline-block;
@@ -66,31 +65,31 @@ button:hover {
     background-color: lighr-gray; /* Color when hovered */
 }
 
-.form-container {
+.form_container {
     display: flex;
-    flex-direction: column;
-    background-color: green
-    
+    flex-direction: row;  
 }
-.personal-info-container{
+.personal_info_container{
     display: flex;
     flex-direction: column;
     height: fit-content;
     background-color: yellow;
-    width: 40%;
+    width: 50%;
 }
 .form-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: fit-content;
+    justify-content: space-between;
     background-color: gray;
-    width: 40%;
+    width: 100%;
 }
 
 .asset-form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 50%;
 }
 
 .percentage {
@@ -127,5 +126,4 @@ button:hover {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: var(--color-4);
 }
