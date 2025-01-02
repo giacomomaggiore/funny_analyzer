@@ -114,10 +114,10 @@ def create_portfolio(portfolio_dict):
     
     print(asset_list)
     print(amount_splits)
-    return asset_list
     df_data = yf.download(asset_list, start=start_date, end=end_date)["Adj Close"]
     df_data.fillna(method='ffill', inplace=True)
     df_data.fillna(method='bfill', inplace=True)
+    return df_data.iloc[0, 0]
     df_data_benchmark = yf.download(benchmark, start=start_date, end=end_date)["Adj Close"]
     n_shares_benchmark = math.floor(total_amount / df_data_benchmark.iloc[0])
     n_shares_per_asset = np.zeros(len(asset_list))
