@@ -115,7 +115,8 @@ def create_portfolio(portfolio_dict):
     print(asset_list)
     print(amount_splits)
     df_data = yf.download(asset_list, start=start_date, end=end_date)
-    df_data = df_data["Adj Close"]
+    print(df_data)
+    #df_data = df_data["Adj Close"]
     return df_data.iloc[0, 0]
     df_data.fillna(method='ffill', inplace=True)
     df_data.fillna(method='bfill', inplace=True)
