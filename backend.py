@@ -1,21 +1,17 @@
 from fastapi import FastAPI, Path, Request
-from pydantic import BaseModel
-from typing import Optional
+
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
 import datetime as dt
-import json
 import yfinance as yf
 import pandas as pd
 import yfinance as yf
 import datetime as dt
-import random
 import math
 import numpy as np
 from fastapi import FastAPI, Path, Request
-from pydantic import BaseModel
-from typing import Optional
+
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
@@ -23,9 +19,8 @@ templates = Jinja2Templates(directory="templates")
 import matplotlib.pyplot as plt
 import google.generativeai as genai
 
-import PIL.Image
 import os
-import base64
+
 
 #--------------------------------------------------------------
 import os
