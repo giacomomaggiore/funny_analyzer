@@ -1,15 +1,12 @@
 :root {
     --color-1: black;
-    --color-2: white(171, 171, 171);
+    --color-2: white;
     --color-3: rgb(181, 181, 181);
     --color-4: rgb(255, 165, 255);
     --margin-top: 10px;
     --margin-left: 10px;
   }
   
-
-
-
 html, body {
     width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
@@ -29,13 +26,26 @@ html, body {
     background-color: var(--color-3);
     margin: 0;
     padding: var(--margin-top);
+    padding-bottom: 0;
 }
 
+h1{
+    margin: 0;
+    padding: 0;
+    font-size: 300%;
+}
 
 @keyframes caret {
     0% {
         border-color: transparent;
     }
+}
+.asset {
+    width: 50%;
+}
+
+input:hover{
+    background-color: var(--color-4);
 }
 
 input {
@@ -45,6 +55,8 @@ input {
     background-color: transparent; /* Transparent background */
     font-size: 20px;
 }
+
+
 
 input:focus {
     outline: none;
@@ -62,7 +74,7 @@ button {
 }
 
 button:hover {
-    background-color: lighr-gray; /* Color when hovered */
+    background-color: var(--color-4); /* Color when hovered */
 }
 
 .form_container {
@@ -73,7 +85,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    background-color: yellow;
     width: 50%;
 }
 .form-container {
@@ -81,24 +92,30 @@ button:hover {
     flex-direction: row;
     height: fit-content;
     justify-content: space-between;
-    background-color: gray;
     width: 100%;
+}
+
+label {
+    font-size: 20px;
+    width: 30%;
+    margin: 4px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
 }
 
 .asset-form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 50%;
+    width: 100%;
 }
 
 .percentage {
-    width: 30%;
+    width: 20%;
 }
 
-.asset {
-    width: 65%;
-}
 
 .content {
     width: 90%;
@@ -106,7 +123,6 @@ button:hover {
 }
 
 .analysis-container {
-    width: 85%;
     font-size: 20px;
 
     word-wrap: break-word;
@@ -121,9 +137,26 @@ button:hover {
 }
 
 .footer{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    
+
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: var(--color-3);
+}
+
+.footer-text{
+    padding-left: var(--margin-left);
+    padding-right: var(--margin-left);
+}
+
+
+a:hover{
+    color: var(--color-2);
+    text-decoration: line-through;
 }

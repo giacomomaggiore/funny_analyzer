@@ -62,16 +62,36 @@ default_asset = ""
 async def analyze(asset_1: str=default_asset, asset_2: str = default_asset, 
                   asset_3: str = default_asset, asset_4: str = default_asset,
                   percentage_1: int = 0, percentage_2: int = 0,
-                  percentage_3: int = 0, percentage_4: int = 0,):
+                  percentage_3: int = 0, percentage_4: int = 0, 
+                  asset_5: str = default_asset,percentage_5: int = 0,
+                  portfolio_value: str = default_asset,
+                  salary: str = default_asset,
+                  age: str = default_asset,
+                  country: str = default_asset,
+                  job: str = default_asset):
     portfolio_dict = {
         "asset_1": [asset_1, percentage_1],
         "asset_2" : [asset_2, percentage_2],
         "asset_3" : [asset_3, percentage_3],
         "asset_4" :[asset_4, percentage_4],
+        "asset_5" : [asset_5, percentage_5]
     }
     
+    personal_info__dict = {
+        "Portfolio value": portfolio_value,
+        "Salary": salary,
+        "Age": age,
+        "Country": country,
+        "Job": job,
+    }
+    for key, value in personal_info__dict.items():
+        if value == default_asset:
+            personal_info__dict.pop(key)
+
+    
+    
     results = create_portfolio(portfolio_dict)
-    funny_analysis = gemini_analysis(portfolio_dict, results)
+    funny_analysis = gemini_analysis(portfolio_dict, results, personal_info__dict)
     return (funny_analysis)
     
       
@@ -176,14 +196,13 @@ def create_portfolio(portfolio_dict):
     
 
 
-def gemini_analysis(portfolio_dict, results):
+def gemini_analysis(portfolio_dict, results, personal_info_dict):
 
 
     #Choose a Gemini model.
 
-    prompt = f"""This is my investment portfolio. 
-    The blue line represents the value of my portfolio over time,
-    while the orange line represents the value of the benchmark (iShares MSCI World).
+    prompt = f"""
+    
     This is the allocation of my portfolio:
     Asset: {portfolio_dict['asset_1'][1]} :{portfolio_dict['asset_1'][0]}%
     Asset: {portfolio_dict['asset_2'][1]} :{portfolio_dict['asset_2'][0]}%
@@ -194,16 +213,24 @@ def gemini_analysis(portfolio_dict, results):
     CAGR Benchmark: {results['cagr_benchmark']}
     Sharpe Ratio Benchmark: {results['sharpe_ratio_benchmark']}
     
+    These are my personal information:
+    {personal_info_dict}
+    
     Analyze it in a funny way please!
-    you can do one of the following:
+    you can:
     - make comparison wih famous movies
+    - make fun of the investor
     - make comparison with food
     - make comparison with animals
     - make comparison with famous people
     - make comparison with famous places
-    Keep it short and make fun of the investor (less than 10000 characters)."""
+    ."""
     
 
-    response = model.generate_content([prompt])
+    response = model.generate_content([prompt],
+        generation_config = genai.GenerationConfig(
+        max_output_tokens=100,
+        temperature=2,
+    ) )
     return response.text
 
