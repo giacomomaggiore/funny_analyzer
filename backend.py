@@ -46,6 +46,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 start_date = "2020-01-01"
 end_date = "2022-01-01"
 benchmark = "IWDA.AS"
+risk_free = 0.044
 
 @app.get('/')
 async def home(request: Request):
@@ -73,10 +74,10 @@ async def analyze(asset_1: str=default_asset, asset_2: str = default_asset,
         "asset_4" :[asset_4, percentage_4],
     }
     
-    [x, y] = create_portfolio(portfolio_dict)
+    results = create_portfolio(portfolio_dict)
     
     
-    funny_analysis = gemini_analysis(portfolio_dict, "graph.png")
+    funny_analysis = gemini_analysis(portfolio_dict, results)
     return (funny_analysis)
     
       
@@ -86,6 +87,21 @@ prova = {
     "asset_1":["IWDA.AS", 50],
     "asset_2": ["AAPL", 50],
 }
+def volatility(df):
+  return df.pct_change(fill_method=None).std() * np.sqrt(252)
+def cagr(df):
+  return ((df.iloc[-1] / df.iloc[0]) ** (1 / (len(df) / 252)) - 1)*100
+def sharpe_ratio(df, risk_free):
+  average_return = float(df.pct_change(fill_method=None).mean()) * 252
+
+  sigma = volatility(df)
+  print(average_return)
+  sharpe_ratio = (average_return - risk_free * 0.01) / sigma
+
+  sharpe_ratio = '%.3f'%(sharpe_ratio)
+  sharpe_ratio = float(sharpe_ratio)
+
+  return sharpe_ratio
 
 def create_portfolio(portfolio_dict):
     print("creato!")
@@ -132,18 +148,25 @@ def create_portfolio(portfolio_dict):
     df_portfolio["Benchmark"] = df_portfolio["Benchmark"] + cash_benchmark
     
     
-    portfolio_start_value = df_portfolio.iloc[0, 0]
-    portfolio_end_value = df_portfolio.iloc[-1, 0]
-    portfolio_length = len(df_portfolio)
+    
 
-    cagr_portfolio = (portfolio_end_value / portfolio_start_value) ** (1 / portfolio_length) - 1
+    #calculate performance metrics
     
-    benchmark_start_value = df_portfolio.iloc[0, 1]
-    benchmark_end_value = df_portfolio.iloc[-1, 1]
-    benchmark_length = len(df_portfolio)
+    cagr_benchmark = cagr(df_portfolio["Benchmark"])
+    cagr_portfolio = cagr(df_portfolio["Portfolio"])
+    sharpe_ratio_portfolio = sharpe_ratio(df_portfolio["Portfolio"], risk_free)
+    sharpe_ratio_benchmark = sharpe_ratio(df_portfolio["Benchmark"], risk_free)
     
-    cagr_benchmark = (benchmark_end_value / benchmark_start_value) ** (1 / benchmark_length) - 1
+    results = {
+        "cagr_portfolio": cagr_portfolio,
+        "cagr_benchmark": cagr_benchmark,
+        "sharpe_ratio_portfolio": sharpe_ratio_portfolio,
+        "sharpe_ratio_benchmark": sharpe_ratio_benchmark
+    }
     
+    return results
+    
+    """
     plt.plot(df_portfolio)
     plt.legend(["Portfolio", "Benchmark (iShares MSCI World)"])
     plt.title("Portfolio vs Benchmark")
@@ -152,15 +175,13 @@ def create_portfolio(portfolio_dict):
     plt.figtext(0.28, 0.7, f"Portfolio CAGR: {math.floor(cagr_portfolio*10000)} \n Benchmark CAGR: {math.floor(cagr_benchmark*10000)}", 
                 ha="center", fontsize=8, bbox={"facecolor":"gray", "alpha":0.5, "pad":5})
     plt.savefig('graph.png')
+    """
     
     
-    return cagr_portfolio, cagr_benchmark
 
 
-def gemini_analysis(portfolio_dict, photo_1_path):
-    photo_1_path = photo_1_path  # Replace with the actual path to your first image
+def gemini_analysis(portfolio_dict, results):
 
-    photo_1 = PIL.Image.open(photo_1_path)
 
     #Choose a Gemini model.
 
@@ -170,6 +191,13 @@ def gemini_analysis(portfolio_dict, photo_1_path):
     This is the allocation of my portfolio:
     Asset: {portfolio_dict['asset_1'][1]} :{portfolio_dict['asset_1'][0]}%
     Asset: {portfolio_dict['asset_2'][1]} :{portfolio_dict['asset_2'][0]}%
+    
+    and this was the performance of my portfolio compared to the benchmark:
+    CAGR: {results['cagr_portfolio']}
+    Sharpe Ratio: {results['sharpe_ratio_portfolio']}
+    CAGR Benchmark: {results['cagr_benchmark']}
+    Sharpe Ratio Benchmark: {results['sharpe_ratio_benchmark']}
+    
     Analyze it in a funny way please!
     you can do one of the following:
     - make comparison wih famous movies
@@ -180,6 +208,6 @@ def gemini_analysis(portfolio_dict, photo_1_path):
     Keep it short and make fun of the investor (less than 10000 characters)."""
     
 
-    response = model.generate_content([prompt, photo_1])
+    response = model.generate_content([prompt])
     return response.text
 

@@ -6,7 +6,6 @@ const domain = window.location.origin
 
 function type() {
     if (index < text.length) {
-
         analysis_text.innerHTML += text.charAt(index);
         index++;
         setTimeout(type, 50); // Regola la velocità di digitazione qui
