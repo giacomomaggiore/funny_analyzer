@@ -16,6 +16,7 @@ html, body {
     overflow: hidden; /* Hides the scrollbars */
     padding: 0 0 0 0; /* Removes default padding */
     margin: 0 0 0 0; /* Remove the margin */
+
 }
 .typewriter p {
     display: inline-block;
@@ -68,8 +69,21 @@ button:hover {
 .form-container {
     display: flex;
     flex-direction: column;
+    background-color: green
+    
+}
+.personal-info-container{
+    display: flex;
+    flex-direction: column;
     height: fit-content;
-    background-color: white;
+    background-color: yellow;
+    width: 40%;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    background-color: gray;
     width: 40%;
 }
 
