@@ -34,6 +34,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key = os.getenv("api_key")
+api_key = "AIzaSyACo6M0CZ5lgz-sBiWpqBEBMA_Y4sRti5Y"
 
 #--------------------------------------------------------------
 genai.configure(api_key=api_key)
