@@ -60,29 +60,30 @@
             <div class = "personal_info_container">
                 <div class="asset-form">
                     <label for="portfolio-value">Portfolio Value</label>
-                    <input  class="asset poppins-bold" type = "number" value = "10000" id = "portfolio-value">
+                    <input  class="info poppins-bold" type = "number" value = "10000" id = "portfolio-value">
                 </div>
 
                 <div class="asset-form">
                     <label for="salary">Salary</label>
-                    <input  class="asset poppins-bold" type="number" value = "60000" id = "salary">
+                    <input  class="info poppins-bold" type="number" value = "60000" id = "salary">
                 </div>
 
                 <div class="asset-form">
                     <label for="job">Job</label>
-                    <input  class="asset poppins-bold"  value = "Pilot" id = "job">
+                    <input  class="info poppins-bold"  value = "Pilot" id = "job">
                 </div>
 
                 <div class="asset-form">
                     <label for="country">Country</label>
-                    <input  class="asset poppins-bold" list = "countries" value = "Paraguay" id = "country">
+                    <input  class="info poppins-bold" list = "countries" value = "Paraguay" id = "country">
                 </div>
 
                 <div class="asset-form">
                     <label for="age">Age</label>
-                    <input  class="asset poppins-bold" type = "number" value = "13" id = "age">
+                    <input  class="info poppins-bold" type = "number" value = "13" id = "age">
                 </div>
-        
+                
+            <button onclick="submitForm()"> ANALYZE!</button>
             </div>
 
             <datalist id="assets">
@@ -99,7 +100,7 @@
             
 
         </div>
-        <button onclick="submitForm()"> ANALYZE!</button>
+        
 
         <div class = "analysis-container typewriter">
                 <p id="analysis-text" style="text-align: justify; overflow: hidden"></p>

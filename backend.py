@@ -230,7 +230,7 @@ def gemini_analysis(portfolio_dict, results, personal_info_dict):
     response = model.generate_content([prompt],
         generation_config = genai.GenerationConfig(
         max_output_tokens=100,
-        temperature=2,
+        temperature=1,
     ) )
     return response.text
 
