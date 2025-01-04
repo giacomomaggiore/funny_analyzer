@@ -5,6 +5,17 @@ let text = "..."
 const domain = window.location.origin
 
 
+let string_animation = `
+<p id="analysis-text" style="text-align: justify; overflow: hidden" class="wait-animation">
+
+Let me consult the crystal ball
+                    
+                    <spac class="dots"></span></p>
+`;
+
+
+
+
 function type() {
     if (index < text.length) {
         analysis_text.innerHTML += text.charAt(index);
@@ -15,6 +26,10 @@ function type() {
 
 
 function submitForm() {
+    analysis_div.innerHTML = ""
+    analysis_div.insertAdjacentHTML("afterbegin",string_animation)
+
+
     let portfolio_value = document.getElementById("portfolio-value").value;
     let salary = document.getElementById("salary").value;
     let country = document.getElementById("country").value;
