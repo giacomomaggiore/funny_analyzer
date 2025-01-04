@@ -22,7 +22,6 @@ html, body {
 .typewriter p {
     display: inline-block;
     border-right: 2px solid black;
-    white-space: nowrap;
     overflow: hidden;
     animation: caret 1s steps(1) infinite;
 }
@@ -148,11 +147,22 @@ label {
     
 }
 
+p.analysis-container{
+    text-align: justify; /* to make sure it breaks the word */
+    overflow: hidden;
+
+    display: block; /* or inline-block, at least its a block element */
+    height: auto; /* height cannot be defined */
+    word-break: break-world; /*  */
+    white-space: normal; 
+}
+
 #analysis-text{
     display: block; /* or inline-block, at least its a block element */
     height: auto; /* height cannot be defined */
     word-break: break-world; /*  */
     white-space: normal; /* be sure its not 'nowrap'! ! ! :/ */
+    
 }
 
 .footer{

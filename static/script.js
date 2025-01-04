@@ -1,4 +1,5 @@
 const analysis_text = document.getElementById("analysis-text")
+const analysis_div = document.getElementById("analysis-container")
 let index = 0;
 let text = "..."
 const domain = window.location.origin
@@ -128,7 +129,11 @@ function submitForm() {
             text = data;
             console.log(text)
             index = 0;
-            type()
+            console.log(analysis_div)
+            data = data.replace("html", '');
+            data = data.replace("```", "")
+            analysis_div.insertAdjacentHTML("afterbegin", data)
+            //type()
 
         })
         .catch(error => {

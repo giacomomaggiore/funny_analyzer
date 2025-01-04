@@ -216,6 +216,9 @@ def gemini_analysis(portfolio_dict, results, personal_info_dict):
     These are my personal information:
     {personal_info_dict}
     
+    
+    
+    
     Analyze it in a funny way please!
     you can:
     - make comparison wih famous movies
@@ -224,12 +227,15 @@ def gemini_analysis(portfolio_dict, results, personal_info_dict):
     - make comparison with animals
     - make comparison with famous people
     - make comparison with famous places
+    
+    Very important: format the text as a <div> elemeent with <p>, >h3>,<h4>, <br> tags.+
+    
     ."""
     
 
     response = model.generate_content([prompt],
         generation_config = genai.GenerationConfig(
-        max_output_tokens=100,
+        max_output_tokens=250,
         temperature=1,
     ) )
     return response.text
