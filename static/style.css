@@ -246,7 +246,11 @@ ANIMATION
     }
 }
 
-
+.slider-container{
+    background-color: var(--color-4);
+    color: var(--color-2);
+    font-size: var(--dimensione-form);
+}
 
 div.slide-left {
   width:100%;
