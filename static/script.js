@@ -3,10 +3,8 @@ const analysis_div = document.getElementById("analysis-container")
 let index = 0;
 let text = "..."
 const domain = window.location.origin
-import {list_tickers} from "./ticker_list"
 
 
-console.log(list_tickers)
 
 let string_animation = `
 <p id="analysis-text" style="text-align: justify; overflow: hidden" class="wait-animation">
@@ -150,6 +148,7 @@ function submitForm() {
             console.log(analysis_div)
             data = data.replace("html", '');
             data = data.replace("```", "")
+            analysis_div.innerHTML = ""
             analysis_div.insertAdjacentHTML("afterbegin", data)
             //type()
 
